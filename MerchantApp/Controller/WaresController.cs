@@ -16,5 +16,24 @@ namespace MerchantApp.Controller
                 return db.Wares.ToList();
             }
         }
+
+        public void CreateWare(Ware w)
+        {
+            using (WaresDBEntities db = new WaresDBEntities())
+            {
+                w.Id = db.Wares.ToList().LastOrDefault().Id + 1;
+                db.Wares.Add(w);
+                db.SaveChanges();
+            }
+        }
+
+        public List<Ware> ShowAllWares()
+        {
+            using(WaresDBEntities db = new WaresDBEntities())
+            {
+                var wares = db.Wares.ToList();
+                return wares;
+            }
+        }
     }
 }

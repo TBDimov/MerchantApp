@@ -1,4 +1,5 @@
 ﻿using MerchantApp.Controller;
+using MerchantApp.Model;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -13,17 +14,42 @@ namespace MerchantApp
 {
     public partial class ItemShop : Form
     {
+        WaresController waresController = new WaresController();
+
         public ItemShop()
         {
             InitializeComponent();
-            WaresController WareController = new WaresController();
         }
 
-        private void Form1_Load(object sender, EventArgs e, WaresController waresController)
+        private void RefreshTable()
         {
-            // TODO: This line of code loads data into the 'waresDBDataSet.Wares' table. You can move, or remove it, as needed.
-            this.waresTableAdapter.Fill(this.waresDBDataSet.Wares);
+            dgvWares.DataSource = waresController.ShowAllWares();
+        }
+
+        private void btnCreate_Click(object sender, EventArgs e)
+        {
+            Ware ware = new Ware();
+            ware.Price = int.Parse(txtPrice.Text);
+            ware.Item_Name = txtItem_Name.Text;
+            ware.Item_Origin = txtItem_Origin.Text;
+            waresController.CreateWare(ware);
+            RefreshTable();
+        }
+
+        private void ItemShop_Load(object sender, EventArgs e)
+        {
             dgvWares.DataSource = waresController.GetAll();
+        }
+
+        private void txtItemName_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dgvWares_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }
+;

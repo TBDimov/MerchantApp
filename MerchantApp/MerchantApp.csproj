@@ -12,6 +12,7 @@
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
     <PublishUrl>publish\</PublishUrl>
     <Install>true</Install>
     <InstallFrom>Disk</InstallFrom>
@@ -24,7 +25,6 @@
     <MapFileExtensions>true</MapFileExtensions>
     <ApplicationRevision>0</ApplicationRevision>
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
-    <IsWebBootstrapper>false</IsWebBootstrapper>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
   </PropertyGroup>
@@ -72,22 +72,22 @@
   <ItemGroup>
     <Compile Include="Controller\WaresController.cs" />
     <Compile Include="Model\Ware.cs">
-      <DependentUpon>WareDBEntities.tt</DependentUpon>
+      <DependentUpon>WaresDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\WareDBEntities.Context.cs">
+    <Compile Include="Model\WaresDBModel.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WareDBEntities.Context.tt</DependentUpon>
+      <DependentUpon>WaresDBModel.Context.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\WareDBEntities.cs">
+    <Compile Include="Model\WaresDBModel.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WareDBEntities.tt</DependentUpon>
+      <DependentUpon>WaresDBModel.tt</DependentUpon>
     </Compile>
-    <Compile Include="Model\WaresDBEntities.Designer.cs">
+    <Compile Include="Model\WaresDBModel.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>WaresDBEntities.edmx</DependentUpon>
+      <DependentUpon>WaresDBModel.edmx</DependentUpon>
     </Compile>
     <Compile Include="Views\ItemShop.cs">
       <SubType>Form</SubType>
@@ -115,14 +115,15 @@
     <EmbeddedResource Include="Views\ItemShop.resx">
       <DependentUpon>ItemShop.cs</DependentUpon>
     </EmbeddedResource>
-    <EntityDeploy Include="Model\WaresDBEntities.edmx">
+    <EntityDeploy Include="Model\WaresDBModel.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>WaresDBEntities.Designer.cs</LastGenOutput>
+      <LastGenOutput>WaresDBModel.Designer.cs</LastGenOutput>
     </EntityDeploy>
-    <None Include="Model\WaresDBEntities.edmx.diagram">
-      <DependentUpon>WaresDBEntities.edmx</DependentUpon>
+    <None Include="Model\WaresDBModel.edmx.diagram">
+      <DependentUpon>WaresDBModel.edmx</DependentUpon>
     </None>
     <None Include="packages.config" />
+    <None Include="Properties\DataSources\MerchantApp.Model.Ware.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -161,17 +162,16 @@
     </BootstrapperPackage>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Model\WareDBEntities.Context.tt">
+    <Content Include="Model\WaresDBModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>WareDBEntities.Context.cs</LastGenOutput>
-      <DependentUpon>WaresDBEntities.edmx</DependentUpon>
+      <DependentUpon>WaresDBModel.edmx</DependentUpon>
+      <LastGenOutput>WaresDBModel.Context.cs</LastGenOutput>
     </Content>
-    <Content Include="Model\WareDBEntities.tt">
+    <Content Include="Model\WaresDBModel.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <DependentUpon>WaresDBEntities.edmx</DependentUpon>
-      <LastGenOutput>WareDBEntities.cs</LastGenOutput>
+      <DependentUpon>WaresDBModel.edmx</DependentUpon>
+      <LastGenOutput>WaresDBModel.cs</LastGenOutput>
     </Content>
-    <None Include="Resources\merchant.png" />
     <Content Include="WaresDB.mdf">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -179,6 +179,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
       <DependentUpon>WaresDB.mdf</DependentUpon>
     </Content>
+    <None Include="Resources\merchant.png" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
