@@ -50,6 +50,13 @@ namespace MerchantApp
         {
 
         }
+
+        private void btnDelete_Click(object sender, EventArgs e)
+        {
+            DataGridViewRow row = dgvWares.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            waresController.DeleteWare(id);
+            RefreshTable();
+        }
     }
 }
-;

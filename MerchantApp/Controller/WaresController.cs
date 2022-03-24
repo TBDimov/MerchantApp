@@ -35,5 +35,19 @@ namespace MerchantApp.Controller
                 return wares;
             }
         }
+        public void DeleteWare(int id)
+        {
+            using (WaresDBEntities db = new WaresDBEntities())
+            {
+
+                var wareToDelete = db.Wares.Where(w => w.Id == id).FirstOrDefault();
+
+                if (wareToDelete != null)
+                {
+                    db.Wares.Remove(wareToDelete);
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }
