@@ -49,5 +49,20 @@ namespace MerchantApp.Controller
                 }
             }
         }
+
+        public void UpdateWare(int id, Ware ware)
+        {
+            using (WaresDBEntities db = new WaresDBEntities())
+            {
+                var wareToUpdate = db.Wares.Where(g => g.Id == id).FirstOrDefault();
+                if (wareToUpdate != null)
+                {
+                    wareToUpdate.Price = ware.Price;
+                    wareToUpdate.ItemName = ware.Item_Name;
+                    wareToUpdate.ItemOrigin = ware.Item_Origin;
+                    db.SaveChanges();
+                }
+            }
+        }
     }
 }

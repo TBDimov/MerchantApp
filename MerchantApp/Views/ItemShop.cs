@@ -41,21 +41,22 @@ namespace MerchantApp
             dgvWares.DataSource = waresController.GetAll();
         }
 
-        private void txtItemName_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void dgvWares_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
         private void btnDelete_Click(object sender, EventArgs e)
         {
             DataGridViewRow row = dgvWares.CurrentRow;
             int id = int.Parse(row.Cells[0].Value.ToString());
             waresController.DeleteWare(id);
+            RefreshTable();
+        }
+
+        private void btnUpdate_Click(object sender, EventArgs e)
+        {
+            var row = dgvWares.CurrentRow;
+            int id = int.Parse(row.Cells[0].Value.ToString());
+            Ware ware = new Ware();
+            ware.Item_Name = txtItem_Name.Text;
+            ware.Price = int.Parse(txtPrice.Text);
+            waresController.UpdateWare(id, ware);
             RefreshTable();
         }
     }
